@@ -9,16 +9,11 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Header */}
       <header className="app-header">
         <h1>Media Content Creator</h1>
       </header>
-      
-      {/* Main Content */}
       <main className="main-content">
-        {/* Three Columns */}
         <div className="columns-container">
-          {/* Text Column */}
           <div 
             className={`media-column ${selectedMedia === 'text' ? 'selected' : ''}`}
             onClick={() => setSelectedMedia('text')}
@@ -35,8 +30,6 @@ function App() {
             <h2>Text</h2>
             <p>Create and format text content</p>
           </div>
-          
-          {/* Video Column */}
           <div 
             className={`media-column ${selectedMedia === 'video' ? 'selected' : ''}`}
             onClick={() => setSelectedMedia('video')}
@@ -56,8 +49,7 @@ function App() {
             <h2>Video</h2>
             <p>Add and embed video content</p>
           </div>
-          
-          {/* Audio Column */}
+
           <div 
             className={`media-column ${selectedMedia === 'audio' ? 'selected' : ''}`}
             onClick={() => setSelectedMedia('audio')}
@@ -76,8 +68,7 @@ function App() {
             <p>Add and play audio content</p>
           </div>
         </div>
-        
-        {/* Content Area Based on Selection */}
+
         <div className="content-area">
           {selectedMedia === 'text' && (
             <div>
