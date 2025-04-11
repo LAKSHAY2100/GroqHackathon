@@ -17,15 +17,15 @@ const newsSchema = new mongoose.Schema({
   },
   originalText: {
     type: String,
-    required: true
+    default: null
   },
   summarizedText: {
     type: String,
-    required: true
+    default: null
   },
   transcription: {
     type: String,
-    default: null 
+    required:true
   },
   status: {
     type: String,
