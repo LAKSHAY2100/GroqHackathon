@@ -7,6 +7,7 @@ require('dotenv').config();
 let User=require("../models/user");
 let News=require("../models/news");
 let userAuth=require("../middlewares/authentication/user")
+
 router.get("/",userAuth,async(req,res)=>{
     res.json({message:"news summary"})
 });
