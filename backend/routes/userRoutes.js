@@ -3,8 +3,11 @@ const jwt=require('jsonwebtoken')
 const router = express.Router();
 const bcrypt=require("bcrypt");
 const z=require("zod");
+let User=require("../models/user");
+let News=require("../models/news");
+let userAuth=require("../middlewares/authentication/user")
 require('dotenv').config();
-let User=require("../models/user")
+
 router.post('/signup',async (req,res)=>{
     const {firstname,email,password,age}=req.body
     const reqBody=z.object({
@@ -63,4 +66,21 @@ router.post('/signin',async (req,res)=>{
 
 })
 
+router.get('/history', userAuth, async (req, res) => {
+    const userId = req.user.userid;
+  
+    try {
+      const userNews = await News.find({ userId }).sort({ createdAt: -1 });
+  
+      if (userNews.length === 0) {
+        return res.json({ message: 'No history found' });
+      }
+  
+      res.json(userNews);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Something went wrong fetching history' });
+    }
+  });
+  
 module.exports=router
